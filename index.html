@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TalkForge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <button id="themeToggle" class="mode-toggle" aria-label="Toggle theme">
+      <i data-lucide="moon"></i>
+    </button>
+
+    <div class="bg-layer" aria-hidden="true">
+      <div class="glow glow-a"></div>
+      <div class="glow glow-b"></div>
+    </div>
+
+    <main class="container">
+      <header class="header text-center mb-10">
+        <div id="headerIconWrap" class="icon-badge animate-fade-in">
+          <i id="headerIcon" data-lucide="mic-2" class="w-10 h-10 text-primary"></i>
+        </div>
+        <h1 class="title animate-fade-in stagger-1"><span class="text-gradient">TalkForge</span></h1>
+        <p id="headerText" class="subtitle animate-fade-in stagger-2">
+          Transform your professional experience into compelling tech talk ideas. Upload your LinkedIn profile and discover topics you're uniquely qualified to present.
+        </p>
+      </header>
+
+      <section class="mode-wrap animate-fade-in stagger-3 mb-10">
+        <div class="mode-toggle-inline">
+          <button id="soloModeBtn" class="mode-btn active" type="button">
+            <i data-lucide="user"></i>
+            <span>Solo Speaker</span>
+          </button>
+          <button id="collabModeBtn" class="mode-btn" type="button">
+            <i data-lucide="users"></i>
+            <span>Two Speakers</span>
+          </button>
+        </div>
+      </section>
+
+      <section id="progressSection" class="glass-card p-8 hidden"></section>
+
+      <section id="inputSection" class="space-y-5 animate-fade-in">
+        <div id="soloSection" class="space-y-5">
+          <div id="soloFileContainer"></div>
+          <div id="soloGitHubContainer"></div>
+          <div id="eventContainer"></div>
+          <button id="generateSoloBtn" class="btn-primary big-btn" type="button" disabled>
+            <i data-lucide="sparkles"></i>
+            <span>Generate Talk Topics</span>
+          </button>
+        </div>
+
+        <div id="collabSection" class="space-y-5 hidden">
+          <div class="grid-two" id="collabUploadGrid"></div>
+          <div id="eventContainerCollab"></div>
+          <button id="generateCollabBtn" class="btn-primary big-btn" type="button" disabled>
+            <i data-lucide="sparkles"></i>
+            <span>Generate Talk Topics</span>
+          </button>
+        </div>
+
+        <section class="api-context mb-5 animate-fade-in stagger-3" id="apiKeyCard">
+          <div class="event-head">
+            <i data-lucide="key-round"></i>
+            <span>Gemini API Key</span>
+            <span class="small muted">(required)</span>
+          </div>
+          <div class="api-key-row">
+            <input id="apiKeyInput" class="input-field" type="password" placeholder="Add your Gemini API key to generate topics." autocomplete="off" />
+            <button id="toggleApiKey" class="btn-secondary small-btn" type="button">Show</button>
+            <button id="saveApiKey" class="btn-primary small-btn" type="button">Save Key</button>
+          </div>
+          <p class="muted small" style="margin:8px 0 0;">
+            Need a key?
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Get Gemini API key</a>
+          </p>
+          <label class="remember-row">
+            <input id="rememberApiKey" type="checkbox" />
+            <span>Remember in this browser</span>
+          </label>
+          <p id="apiKeyStatus" class="muted small"></p>
+        </section>
+      </section>
+
+      <section id="errorSection" class="error-alert hidden"></section>
+      <section id="resultsSection" class="hidden"></section>
+      <section id="toastHost" class="toast-host" aria-live="polite" aria-atomic="true"></section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
