@@ -27,14 +27,13 @@
 - Format indicators (Talk vs Workshop), duration, and audience level.
 
 ### UI/UX
-- Dark/Light theme toggle.
 - Responsive design.
 - Animated loading states.
 
 ## 🛠 Tech Stack
 
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES Modules).
-- **Styling**: Custom CSS with CSS Variables for theming.
+- **Styling**: Modular CSS with CSS Variables.
 - **AI**: Google Gemini API (Client-side integration).
 - **PDF Processing**: PDF.js (via CDN).
 - **Icons**: Lucide Icons (via CDN).
@@ -43,10 +42,17 @@
 
 ```
 .
-├── index.html      # Main application entry point
-├── app.js          # Core application logic (State, UI, API, PDF handling)
-├── styles.css      # All application styles and themes
-└── README.md       # Project documentation
+├── index.html           # Main application entry point
+├── app.js               # JS entry module (loads app core)
+├── js/
+│   ├── app-core.js      # Core application logic (UI, API, PDF handling)
+│   ├── config.js        # Constants and validation patterns
+│   └── state.js         # Shared app state and DOM references
+├── styles.css           # CSS entry module
+├── styles/
+│   ├── base.css         # Variables, resets, layout helpers
+│   └── components.css   # Component and interaction styles
+└── README.md            # Project documentation
 ```
 
 ## 🚀 Getting Started
@@ -96,9 +102,9 @@ Or simply open `index.html` directly in your browser (though some features might
 - **GitHub Validation**: format checks and API validation.
 - **Private Key**: Your API key is stored only in your browser's local storage (if you choose to save it) and is never sent to any backend server (only to Google's API).
 
-## 🎨 Theming
+## 🎨 Styling
 
-The app supports both dark and light modes, toggled via the sun/moon button. Preference is saved to `localStorage`.
+The app uses a single light visual theme with modular CSS files imported through `styles.css`.
 
 ## 📝 License
 
